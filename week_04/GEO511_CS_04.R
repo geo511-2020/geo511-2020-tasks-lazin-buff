@@ -20,6 +20,7 @@ summary(flights$air_time)
 #Based on Distance
 flight_maxD<-flights%>%
   rename("faa"="dest")%>%
+  filter(origin=="JFK"|origin=="LGA"|origin=="EWR")%>%
   arrange(desc(distance))%>%
   slice(1)
 port_maxD<-inner_join(flight_maxD,airports)
@@ -29,11 +30,14 @@ port_maxD$name
 #Based on Air Time
 flight_maxT<-flights%>%
   rename("faa"="dest")%>%
+  filter(origin=="JFK"|origin=="LGA"|origin=="EWR")%>%
   arrange(desc(air_time))%>%
   slice(1)
 port_maxT<-inner_join(flight_maxT,airports)
 port_maxT$name
 #Honolulu Intl
+
+#Added in origin filter per recommendation of Collin O'Connor. Although code produces correct answer, code is non replicable for other cities w/o addition of origin filter.
 
 #Extra Time
 airports %>%
