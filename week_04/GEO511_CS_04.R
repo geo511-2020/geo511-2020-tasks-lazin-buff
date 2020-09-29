@@ -32,3 +32,18 @@ flight_maxT<-flights%>%
 port_maxT<-inner_join(flight_maxT,airports)
 port_maxT$name
 #Honolulu Intl
+
+#Extra Time
+airports %>%
+  distinct(lon,lat) %>%
+  ggplot(aes(lon, lat)) +
+  borders("world") +
+  geom_point(col="red") +
+  coord_quickmap()
+
+airports %>%
+  distinct(lon,lat) %>%
+  ggplot(aes(lon, lat)) +
+  borders("") +
+  geom_point(col="red") +
+  coord_quickmap()
