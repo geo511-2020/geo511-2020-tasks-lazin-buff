@@ -11,6 +11,7 @@ library(sf)
 library(tidyverse)
 library(units)
 library(tmap)
+library(ggplot2)
 
 #load data
 
