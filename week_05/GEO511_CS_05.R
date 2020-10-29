@@ -38,7 +38,7 @@ plot(border)
 st_area(border)
 
 #tried out tmap per recommendation of Collin O'Connor
-  tm_graticules(col="green")+
+tm_graticules(col="green")+
   tm_shape(nys_trans)+
   tm_fill(col="gray")+
   tm_borders(col="black")+

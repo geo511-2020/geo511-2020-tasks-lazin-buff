@@ -1,0 +1,39 @@
+---
+title: "GEO511_CS_08"
+author: "Marko Lazin"
+date: "10/27/2020"
+output: 
+  pdf_document: default
+  html_document: default
+  word_document: default
+  powerpoint_presentation: default
+  github_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Setup
+```{r} 
+library(tidyverse)
+```
+Data
+```{r, message=FALSE}
+cs8_data<-read_table("ftp://aftp.cmdl.noaa.gov/products/trends/co2/co2_annmean_mlo.txt",skip=56)
+cs8_data<-cs8_data[,2:4]
+```
+Graph
+```{r}
+ggplot(cs8_data,aes(x=year,y=mean))+
+  geom_line()+
+  labs(title="Mauna Loa CO2 Annual Mean",x="Year",y="Mean CO2 PPM")
+```
+Table
+```{r}
+knitr::kable(head(arrange(cs8_data,desc(mean))),format="simple",align="c",caption="Mauna Loa CO2 Top Annual Mean")
+```
+
+```{r, echo=FALSE}
+#rmarkdown::render(file, output_format="all")
+```
