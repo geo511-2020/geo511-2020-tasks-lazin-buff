@@ -1,0 +1,54 @@
+---
+title: "Project Proposal"
+author: "Marko Lazin"
+date: "11/7/2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction to problem/question
+The 2020 United States federal elections has been framed as an acute moment of national ideological friction. However, statements like these, though prevalent, often come from subjective personal perspectives. That being the case it is prudent that statements like these have some form of substance to support them. Chiefly as a researcher it is valuable to explore the measurement and quantification of national and subgroup sentiments during this unique moment.
+
+# Problem / Question
+For this project the researcher will be creating a heat maps of the United States by state, which will display the sentiment of Twitter user tweets.
+
+# Inspiring Examples
+
+The following examples are previous visualizations that have been compiled by data journalists and academics that either deal with sentiments, tweets, or heatmaps of the United States.
+
+# Example 1
+![Source: https://www.huffpost.com/entry/sgi-twitter-heat-map_n_2138726](https://s-i.huffpost.com/gen/864725/images/o-TWITTER-HEAT-MAP-facebook.jpg)
+Although several years old this heat map was an early example of a sentiment analysis. The company responsible, SGI, conducted sentiment analysis of tweets that incorporated both GPS coordinates (hard to come by on twitter), and actual text mining to produce a mapping of where the angriest and least angry tweets in the country came from. I specifically like the use of colors and gradients to express the degree of anger (or lack).
+
+# Example 2
+![Source: https://peterpappas.com/2016/01/driving-while-black-interactive-map-mid-century-america.html](https://peterpappas.com/images/2016/01/US-Heat-map-1956.jpg)
+Like the previous example the following heat map displayed an amorphous density gradient, however it feels much more historically salient. This maps the locations of black / African-American friendly establishments listed in the Greenbook which was a travel guide during segregatrion in the US. I like this map more than the first one simply because it is innocuous at a surface level, but has a deep and visceral context.
+
+#Example 3
+![Source: https://www.theatlantic.com/technology/archive/2012/08/how-america-swears-heres-a-heatmap-tracking-twitter-profanity/261438/](https://cdn.theatlantic.com/static/mt/assets/science/Screen%20Shot%202012-08-22%20at%2011.31.57%20AM.png)
+On a much lighter note, the following map is a more pointed and idiomatic specific amorphous heatmap of the US. It maps the density of the occurence of the term "fuck you" in tweets. It made me laugh, but also is more in line with the type of analysis I will be doing because I am specifically interested in a type of sentiment analysis that is beyond a simple gradient scale, but rather categorizes ngrams and bigrams into specific sentiments.
+
+#Example 4
+![Source: https://xkcd.com/1845/](https://geographyeducationdotorg.files.wordpress.com/2017/11/e9575f98-7002-4be2-b60c-d96f29ad0ef5.jpg)
+Frankly this one just made me laugh, and is an excellent reminder of my own biases in the process of developing a heat map of the US by tweet words.
+
+#Example 5
+![Source:http://geometrx.com/common-ground-news-trivia-maps/](http://geometrx.com/wp-content/uploads/2013/12/2013.12-Meal-Preparation-No-Time.png)
+The following example is what I would ideally like my project to look like when completed, however because of the difficulties of specific geo-location im not sure how feasible my task will be at a county level (as observed above). I would however like to narrow the categorization and perform two separate sentiment analyses one that is a gradient scale of positive and negative sentiment, ontop of which will be the most common word sentiment expressed in a particular shape file (probably state).
+
+# Proposed data sources
+
+Be as specific as possible.
+
+# Proposed methods
+
+List the approach you will use. Don't simply list packages, tell me what you will do with them.
+
+# Expected results
+
+Describe what you want to produce (graphics, analyses, etc.)
