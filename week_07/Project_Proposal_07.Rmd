@@ -43,7 +43,7 @@ The following example is what I would ideally like my project to look like when 
 
 # Proposed data sources
 
-Be as specific as possible.
+My data will come directly from Twitter's stream API. The data will be collected during the day(s) following the US Federal / Presidential Election and on the day when the winner is announced.
 
 # Proposed methods
 
