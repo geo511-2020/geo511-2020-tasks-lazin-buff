@@ -47,8 +47,11 @@ My data will come directly from Twitter's stream API. The data will be collected
 
 # Proposed methods
 
-List the approach you will use. Don't simply list packages, tell me what you will do with them.
+1) Extract tweet streams from Twitter Rest API (rtweet package)
+2) Clean up data, specifically extract tweets and locations from twitter entries (tibble, tidytext, and tokenizer package)
+3) Create shape file for locations extracted
+4) Apply aesthetic visualization of data on shape files
 
 # Expected results
 
-Describe what you want to produce (graphics, analyses, etc.)
+A map and a table
