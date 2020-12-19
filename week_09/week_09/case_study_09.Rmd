@@ -1,0 +1,67 @@
+---
+title: "Case Study 09"
+author: Marko Lazin
+date: August 1, 2020
+output: github_document
+---
+
+###Initialize
+```{r setup,include=F,message=F,warning=F}
+knitr::opts_chunk$set(echo=T)
+
+library(sf)
+library(tidyverse)
+library(ggmap)
+library(spData)
+library(rnoaa)
+library(raster)
+library(ggplot2)
+data(world)
+data(us_states)
+```
+
+```{r, include=F}
+dataurl="https://www.ncei.noaa.gov/data/international-best-track-archive-for-climate-stewardship-ibtracs/v04r00/access/shapefile/IBTrACS.NA.list.v04r00.points.zip"
+tdir=tempdir()
+download.file(dataurl,destfile=file.path(tdir,"temp.zip"))
+unzip(file.path(tdir,"temp.zip"),exdir = tdir)
+list.files(tdir)
+
+storm_data <- read_sf(list.files(tdir,pattern=".shp",full.names = T))
+```
+
+```{r, warning=F}
+storm_data_1<-filter(storm_data,SEASON>1949)%>%
+  mutate_if(is.numeric,function(x) ifelse(x==-999.0,NA,x))
+storm_data_2<-storm_data_1%>%
+  mutate(decade=(floor(year/10)*10))
+
+region<-st_bbox(storm_data_2)
+```
+
+```{r}
+storm_map<-ggplot(world)+
+  geom_sf(fill="white")+
+  stat_bin2d(data=storm_data_2,
+             aes(y=st_coordinates(storm_data_2)[,2],x=st_coordinates(storm_data_2)[,1]),
+             bins=100,alpha=0.5)+
+  scale_fill_distiller(palette="YlOrRd", trans="log", direction=-1, breaks = c(1,10,100,1000))+
+  coord_sf(ylim=region[c(2,4)],xlim=region[c(1,3)])+
+  facet_wrap(~decade)+
+  labs(title="Atlantic Hurricanes 1950 to 2020",y="Latitude",x="Longitude")
+
+storm_map
+```
+```{r}
+state_coord<-us_states%>%
+  st_transform(crs(storm_data_2))%>%
+  rename(state=NAME)
+storm_state<-st_join(storm_data_2,state_coord,join=st_intersects,left=F)
+storm_state_group<-storm_state%>%  
+  group_by(state)%>%
+  summarize(storms=length(unique(NAME)))%>%
+  arrange(desc(storms))%>%
+  slice(1:5)%>%
+  st_set_geometry(NULL)
+storm_state_group
+```
