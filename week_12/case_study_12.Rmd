@@ -4,4 +4,51 @@ author: Your Name
 date: August 1, 2020
 output: github_document
 ---
- 
+### Initialize
+```{r,message=F,error=F,include=F}
+library(ggplot2)
+library(dplyr)
+library(ggmap)
+library(htmlwidgets)
+library(widgetframe)
+library(tidyverse)
+library(rnoaa)
+library(xts)
+library(dygraphs)
+```
+### Download Data
+```{r}
+d=meteo_tidy_ghcnd("USW00014733",date_min="2016-01-01",var=c("TMAX"),keep_flags=T) %>% 
+   mutate(date=as.Date(date),tmax=as.numeric(tmax)/10)
+```
+### Step 1
+```{r}
+d_xts<-xts(d$tmax,order.by=d$date)
+
+```
+### Step 2, 3, 4
+```{r}
+d_plot<-dygraph(d_xts,main="Daily Max Temperature in Buffalo, NY")%>%
+  dyRangeSelector(dateWindow = c("2020-01-01","2020-10-31"))
+d_plot
+```
+### Step 5
+```{r}
+d5=meteo_tidy_ghcnd("USW00014733",date_min="2016-01-01",var=c("TMAX","PRCP","TMIN"),keep_flags=T) %>% 
+  mutate(date=as.Date(date),tmax=as.numeric(tmax)/10)%>%
+  mutate(date=as.Date(date),tmin=as.numeric(tmin)/10)%>%
+  mutate(date=as.Date(date),prcp=as.numeric(prcp)/100)
+
+d5_tmax<-xts(d5$tmax,order.by=d$date)
+d5_prcp<-xts(d5$prcp,order.by=d$date)
+d5_tmin<-xts(d5$tmin,order.by=d$date)
+
+d5_weather<-cbind(d5_tmax,d5_prcp,d5_tmin)
+
+d5_plot<-dygraph(d5_weather,main="Daily Weather Extremes in Buffalo, NY")%>%
+  dySeries("d5_prcp",axis='y2')%>%
+  dyAxis("y",label="Temperature (C)")%>%
+  dyAxis("y2",label="Precipitation (cm)")%>%
+  dyRangeSelector(dateWindow = c("2020-01-01","2020-10-31"))
+d5_plot
+```
