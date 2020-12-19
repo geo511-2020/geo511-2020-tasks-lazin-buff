@@ -1,0 +1,33 @@
+[<i class="fa fa-file-code-o fa-1x" aria-hidden="true"></i> Download this file as a template ](`r knitr::current_input()`).
+
+# Introduction to problem/question
+The 2020 United States federal elections has been framed as an acute moment of national ideological friction. However, statements like these, though prevalent, often come from subjective personal perspectives. That being the case it is prudent that statements like these have some form of substance to support them. Chiefly as a researcher it is valuable to explore the measurement and quantification of national and subgroup sentiments during this unique moment.
+
+# Problem / Question
+For this project the researcher will be creating a heat maps of the United States by state, which will display the sentiment of Twitter user tweets.
+
+# Inspiring Examples
+
+The following examples are previous visualizations that have been compiled by data journalists and academics that either deal with sentiments, tweets, or heatmaps of the United States.
+
+## Example 1
+![](https://theoreticalecology.files.wordpress.com/2012/05/6307925837_5074118a44_b.jpg)
+
+I found this graphic easy to understand yet rich with detail.  The graphic summarizes political shifts across the nation from Democratic (left) to Republican (right) with simple arrows.  This type of graphic could be used to illustrate many different kinds of changes (or movement) using simple `geom_segment()` in ggplot.
+
+## Example 2
+
+## Example 3
+
+
+# Proposed data sources
+
+Be as specific as possible.
+
+# Proposed methods
+
+List the approach you will use. Don't simply list packages, tell me what you will do with them.
+
+# Expected results
+
+Describe what you want to produce (graphics, analyses, etc.)

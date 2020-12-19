@@ -1,0 +1,28 @@
+---
+title: "GEO511_CS_07"
+author: "Marko Lazin"
+date: "10/16/2020"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(reprex)
+library(sf)
+
+library(spData)
+data(world)
+```
+
+
+```{r}
+#library(tidyverse)
+#library(sf)
+#library(spData)
+data(world)
+
+ggplot(world,aes(x=gdpPercap, y=continent,color=continent))+
+   geom_density(alpha=0.5,color=F)
+```
